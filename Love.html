@@ -852,7 +852,6 @@ burst.remove();
 setInterval(createHeart,700);
 
 /* MAGIC BUTTON */
-
 function showMessage(){
 
 const messages = [
@@ -861,7 +860,7 @@ const messages = [
 
 '🌸 Same innocent smile... same beautiful vibe ✨',
 
-'💫 Kuch cheezein time ke sath aur zyada beautiful ho jati hain',
+'💫 Kuch cheezein time ke sath aur zyada beautiful ho jati hain 💖',
 
 '💖 Pretty vibes detected again & again',
 
@@ -880,7 +879,7 @@ document.createElement('div');
 popup.innerHTML =
 messages[random];
 
-popup.style.position='absolute';
+popup.style.position='fixed';
 
 popup.style.left='50%';
 
@@ -889,36 +888,111 @@ popup.style.top='50%';
 popup.style.transform=
 'translate(-50%,-50%) scale(0.3)';
 
-popup.style.padding='25px 40px';
+popup.style.padding='28px 45px';
 
-popup.style.borderRadius='30px';
+popup.style.borderRadius='35px';
 
 popup.style.background=
 'linear-gradient(45deg,#ff00cc,#6a5cff,#00ffee)';
 
 popup.style.color='white';
 
-popup.style.fontSize='28px';
+popup.style.fontSize='30px';
 
 popup.style.fontWeight='700';
 
 popup.style.textAlign='center';
 
+popup.style.maxWidth='90%';
+
+popup.style.lineHeight='1.6';
+
 popup.style.zIndex='9999';
 
+popup.style.backdropFilter='blur(15px)';
+
 popup.style.boxShadow=
-'0 0 60px rgba(255,0,200,0.8)';
+'0 0 80px rgba(255,0,200,0.9)';
 
 popup.style.animation=
-'magicPopup 2s ease forwards';
+'magicPopup 1s ease forwards';
 
 document.body.appendChild(popup);
 
-setTimeout(()=>{
-popup.remove();
-},3000);
+/* STYLE INSIDE FUNCTION */
+
+const style =
+document.createElement('style');
+
+style.innerHTML = `
+
+@keyframes magicPopup{
+
+0%{
+opacity:0;
+
+transform:
+translate(-50%,-50%)
+scale(0.3)
+rotate(-15deg);
 }
 
+50%{
+opacity:1;
+
+transform:
+translate(-50%,-50%)
+scale(1.1)
+rotate(5deg);
+}
+
+100%{
+opacity:1;
+
+transform:
+translate(-50%,-50%)
+scale(1)
+rotate(0deg);
+}
+}
+
+@keyframes magicFade{
+
+0%{
+opacity:1;
+
+transform:
+translate(-50%,-50%)
+scale(1);
+}
+
+100%{
+opacity:0;
+
+transform:
+translate(-50%,-120%)
+scale(0.7);
+}
+}
+
+`;
+
+document.head.appendChild(style);
+
+/* REMOVE AFTER 6 SEC */
+
+setTimeout(()=>{
+
+popup.style.animation =
+'magicFade 1s ease forwards';
+
+setTimeout(()=>{
+popup.remove();
+},1000);
+
+},1800);
+
+}
 
 /* SECRET MESSAGE */
 
